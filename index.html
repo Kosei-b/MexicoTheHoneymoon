@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kosei &amp; Alo's Honeymoon · ¡Viva México!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,400&family=Inter:wght@400;500;600&display=swap');
+  :root{
+    --blush:#F9F1EC;          /* warm blush paper */
+    --paper:#FFFDFB;
+    --ink:#3A2530;            /* deep plum-wine */
+    --wine:#8E3B55;           /* rose wine */
+    --gold:#C29A5B;           /* champagne gold */
+    --terra:#C0512E;
+    --surf:#3A7D8C;
+    --agave:#6B7A45;
+    --line:#EBD9D3;
+    --muted:#A08894;
+    --rose:#D6879F;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--blush);color:var(--ink);font-family:'Inter',sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:820px;margin:0 auto;padding:0 22px}
+
+  /* ─── HERO ─── */
+  header.hero{
+    position:relative;
+    padding:86px 22px 60px;
+    text-align:center;
+    background:
+      radial-gradient(ellipse 90% 55% at 50% -5%, rgba(214,135,159,.16), transparent),
+      radial-gradient(ellipse 70% 45% at 50% 115%, rgba(194,154,91,.18), transparent),
+      var(--blush);
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .names{
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-weight:500;
+    font-size:clamp(22px,4vw,30px);
+    color:var(--wine);
+    letter-spacing:.04em;
+  }
+  .names .amp{color:var(--gold);font-size:.85em;padding:0 6px}
+  .hm-label{
+    margin-top:10px;
+    font-size:11px;letter-spacing:.42em;text-transform:uppercase;
+    color:var(--muted);font-weight:600;
+  }
+  h1{
+    margin-top:26px;
+    font-family:'Fraunces',serif;font-weight:900;
+    font-size:clamp(52px,10.5vw,96px);line-height:.92;
+    letter-spacing:-.02em;
+  }
+  h1 em{font-style:italic;font-weight:400;color:var(--wine)}
+  .flourish{
+    margin:26px auto 0;display:flex;align-items:center;justify-content:center;gap:14px;
+    color:var(--gold);font-size:15px;
+  }
+  .flourish::before,.flourish::after{
+    content:"";height:1px;width:70px;background:linear-gradient(90deg,transparent,var(--gold));
+  }
+  .flourish::after{background:linear-gradient(90deg,var(--gold),transparent)}
+  .dates{
+    margin-top:16px;font-family:'Cormorant Garamond',serif;
+    font-size:21px;color:var(--ink);font-weight:500;letter-spacing:.05em;
+  }
+  .route{margin-top:24px;display:flex;justify-content:center;flex-wrap:wrap;gap:10px;font-size:13px;font-weight:600;letter-spacing:.04em;}
+  .route span{background:var(--paper);border:1px solid var(--line);padding:7px 16px;border-radius:40px;color:var(--wine)}
+  .route i{color:var(--gold);align-self:center;font-style:normal}
+
+  /* trip map */
+  .tripmap{margin:32px auto 0;max-width:600px}
+  .tripmap svg{width:100%;height:auto;display:block;border-radius:16px;border:1px solid var(--line);box-shadow:0 6px 24px rgba(58,37,48,.12)}
+  .tripmap .ocean{fill:#B7C7CC;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.08em;opacity:.7}
+  .tripmap .city{fill:var(--ink);font-family:'Fraunces',serif;font-size:13px;font-weight:600}
+  .tripmap .city .num{fill:var(--wine);font-size:13px}
+  .tripmap .fromlabel{fill:var(--gold);font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px}
+  .tripmap .leglabel{fill:var(--wine);font-family:'Fraunces',serif;font-size:11px;font-weight:600;opacity:.8}
+  .maplegend{
+    display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;
+    margin-top:12px;font-size:11.5px;color:var(--muted);font-weight:500;
+  }
+  .maplegend span{display:inline-flex;align-items:center;gap:6px}
+  .maplegend .dot{width:9px;height:9px;border-radius:50%}
+  .maplegend .dot.c{background:#C0281C}
+  .maplegend .dot.t{background:#1D7A8C}
+  .maplegend .dot.g{background:#4C6B23}
+  .maplegend .dash{width:16px;height:0;border-top:2px dashed #8A6A1F}
+
+  /* flights */
+  .flights{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:38px}
+  .fcard{
+    background:var(--ink);color:var(--blush);border-radius:16px;padding:20px 22px;
+    text-align:left;
+  }
+  .fcard .lbl{font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .froute{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .froute .ap{font-family:'Fraunces',serif;font-size:27px;font-weight:900}
+  .froute .arrow{color:var(--rose);font-size:16px}
+  .fmeta{font-size:12px;color:#CDB6BE;margin-top:10px;line-height:1.6}
+  .fmeta b{color:var(--blush);font-weight:600}
+
+  /* ─── LEGS ─── */
+  .leg{
+    margin-top:60px;padding:22px 26px;border-radius:18px;color:var(--paper);
+    display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;
+    position:relative;overflow:hidden;
+  }
+  .leg::after{
+    content:attr(data-n);position:absolute;right:18px;bottom:-24px;
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:90px;opacity:.13;line-height:1;
+  }
+  .leg.city{background:linear-gradient(120deg,var(--terra),#A8431F)}
+  .leg.sea{background:linear-gradient(120deg,var(--surf),#2A6472)}
+  .leg.gdl{background:linear-gradient(120deg,var(--agave),#57652F)}
+  .leg h2{font-family:'Fraunces',serif;font-size:29px;font-weight:600}
+  .leg .span{font-size:13px;font-weight:600;opacity:.9;letter-spacing:.05em}
+  .leg .tag{margin-left:auto;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;background:rgba(255,255,255,.22);padding:5px 13px;border-radius:30px;}
+
+  .stayinfo{
+    background:var(--paper);border:1px solid var(--line);border-radius:13px;
+    padding:13px 18px;margin-top:12px;font-size:13px;color:#5c4550;
+    display:flex;flex-wrap:wrap;gap:6px 22px;align-items:center;
+  }
+  .stayinfo b{color:var(--ink)}
+  .maplink{
+    display:inline-flex;align-items:center;gap:4px;
+    font-size:11.5px;font-weight:600;letter-spacing:.03em;
+    color:var(--wine);text-decoration:none;
+    background:#F6EBEF;border:1px solid var(--line);
+    padding:3px 10px;border-radius:20px;transition:background .15s;
+  }
+  .maplink:hover{background:#EFDCE3}
+  .maplink::before{content:"📍";font-size:11px}
+  .fcard .maplink{
+    background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.18);
+    color:var(--rose);margin-top:12px;
+  }
+  .fcard .maplink:hover{background:rgba(255,255,255,.18)}
+  .chip{background:#F2E6EA;color:var(--wine);font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 10px;border-radius:20px}
+  .chip.fam{background:#F5EDE0;color:var(--gold)}
+
+  /* ─── DAYS ─── */
+  .day{
+    background:var(--paper);border:1px solid var(--line);border-radius:16px;
+    padding:23px 25px;margin-top:14px;
+    display:grid;grid-template-columns:64px 1fr;gap:20px;align-items:start;
+  }
+  .daynum{text-align:center;border-right:1px solid var(--line);padding-right:16px;}
+  .daynum .d{font-family:'Fraunces',serif;font-size:34px;font-weight:900;line-height:1}
+  .daynum .m{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:4px}
+  .daynum .w{font-size:11px;color:var(--wine);font-weight:600;margin-top:6px}
+  .day h3{font-family:'Fraunces',serif;font-size:19.5px;font-weight:600;margin-bottom:10px}
+  .day ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .day li{font-size:14.5px;padding-left:20px;position:relative;color:#4d3a44}
+  .day li::before{
+    content:"";position:absolute;left:2px;top:9px;width:6px;height:6px;
+    border-radius:50%;background:var(--gold);
+  }
+  .day li b{font-weight:600;color:var(--ink)}
+  .note{margin-top:12px;font-size:13px;color:var(--muted);font-style:italic;border-left:2px solid var(--line);padding-left:12px;}
+  .note.warn{color:var(--terra);border-color:var(--terra)}
+
+  /* WEDDING DAY — the centerpiece */
+  .day.hl{
+    background:linear-gradient(150deg,#FCF6F1,#F8ECEF);
+    border:1.5px solid var(--rose);
+    box-shadow:0 8px 30px rgba(142,59,85,.14);
+    position:relative;
+  }
+  .day.hl::before{
+    content:"♥";position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--wine);color:var(--paper);
+    width:26px;height:26px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-size:12px;
+  }
+  .day.hl h3{color:var(--wine);font-style:italic;font-weight:600}
+  .day.hl li::before{background:var(--rose)}
+
+  /* honeymoon moments */
+  .moment{
+    margin-top:14px;
+    background:linear-gradient(120deg,rgba(214,135,159,.1),rgba(194,154,91,.1));
+    border:1px dashed var(--rose);border-radius:12px;
+    padding:12px 16px;font-size:13px;color:var(--wine);
+  }
+  .moment b{font-weight:600}
+  .moment .h{color:var(--rose)}
+
+  /* ─── COSTS ─── */
+  .costs{margin:60px 0 20px;background:var(--ink);color:var(--blush);border-radius:20px;padding:36px 32px;}
+  .costs h2{font-family:'Fraunces',serif;font-size:27px;margin-bottom:6px}
+  .costs h2 em{font-style:italic;font-weight:400;color:var(--rose)}
+  .costs .sub{font-size:12px;color:#B79AA5;letter-spacing:.05em;margin-bottom:22px}
+  .costgroup{font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin:22px 0 4px}
+  .costrow{display:flex;justify-content:space-between;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.09);gap:12px}
+  .costrow .name{font-size:14.5px}
+  .costrow .name small{display:block;color:#B79AA5;font-size:12px;margin-top:2px}
+  .costrow .amt{font-family:'Fraunces',serif;font-size:18px;font-weight:600;white-space:nowrap}
+  .costrow.sub2 .name{color:#CDB6BE;font-size:13px}
+  .costrow.sub2 .amt{font-size:15px;color:#CDB6BE}
+  .costrow.total{border-bottom:none;margin-top:14px;padding-top:22px;border-top:1.5px solid var(--gold)}
+  .costrow.total .name{font-family:'Fraunces',serif;font-size:20px;font-weight:600}
+  .costrow.total .amt{font-size:29px;color:var(--gold)}
+  .costnote{margin-top:16px;font-size:12.5px;color:#B79AA5;line-height:1.6}
+
+  /* ─── TIPS ─── */
+  .tips{margin:26px 0 20px;background:var(--paper);border:1px solid var(--line);border-radius:20px;padding:32px;}
+  .tips h2{font-family:'Fraunces',serif;font-size:22px;margin-bottom:18px}
+  .tips .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 26px}
+  .tips h4{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--wine);margin-bottom:5px}
+  .tips p{font-size:13.5px;color:#5c4550;line-height:1.55}
+
+  footer{text-align:center;padding:48px 22px 64px;color:var(--muted);font-size:13px}
+  footer .ff{
+    font-family:'Cormorant Garamond',serif;font-style:italic;
+    font-size:24px;color:var(--wine);letter-spacing:.03em;
+  }
+  footer .sub{margin-top:10px}
+  footer .flourish{margin-top:18px}
+
+  @media(max-width:600px){
+    .flights{grid-template-columns:1fr}
+    .day{grid-template-columns:52px 1fr;gap:14px;padding:19px}
+    .daynum{padding-right:10px}.daynum .d{font-size:28px}
+    .tips .grid{grid-template-columns:1fr}.leg .tag{margin-left:0}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="names">Kosei <span class="amp">&amp;</span> Alondra</div>
+  <div class="hm-label">The Honeymoon</div>
+  <h1>¡Viva<br><em>México!</em></h1>
+  <div class="flourish">✦</div>
+  <div class="dates">September 7 — 20, 2026</div>
+  <div class="route">
+    <span>Mexico City</span><i>✦</i>
+    <span>Sayulita</span><i>✦</i>
+    <span>Guadalajara</span>
+  </div>
+
+  <!-- ─── ROUTE MAP (atlas style) ─── -->
+  <div class="tripmap">
+    <svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atlas map of Mexico with the honeymoon route">
+      <defs>
+        <linearGradient id="oceanG" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#8FC1E3"/>
+          <stop offset="1" stop-color="#5FA8D3"/>
+        </linearGradient>
+        <marker id="routeArrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 L1.6,3 Z" fill="#8E1E3F"/>
+        </marker>
+        <marker id="flightArrow" markerWidth="6" markerHeight="6" refX="4" refY="3" orient="auto">
+          <path d="M0,0 L6,3 L0,6 L1.6,3 Z" fill="#8A6A1F"/>
+        </marker>
+      </defs>
+
+      <!-- Ocean -->
+      <rect x="0" y="0" width="900" height="640" fill="url(#oceanG)"/>
+      <!-- faint graticule -->
+      <g stroke="#BFDCEF" stroke-width="1" opacity=".5">
+        <line x1="180" y1="0" x2="180" y2="640"/>
+        <line x1="400" y1="0" x2="400" y2="640"/>
+        <line x1="620" y1="0" x2="620" y2="640"/>
+        <line x1="0" y1="250" x2="900" y2="250"/>
+        <line x1="0" y1="470" x2="900" y2="470"/>
+      </g>
+
+      <!-- U.S.A. (yellow) -->
+      <path d="M0,0 H900 L900,78 Q820,82 772,88 Q735,110 700,122 Q660,132 645,142
+               Q615,170 600,192 Q580,215 568,242
+               L555,228 Q535,215 495,192 Q465,188 448,158 Q425,152 390,125
+               Q365,100 332,64 L300,62 L215,74 L150,56 L95,40 L62,32 L0,28 Z"
+            fill="#F7E88E" stroke="#D9C25C" stroke-width="1"/>
+
+      <!-- MEXICO mainland + Baja (orange, one loop) -->
+      <path d="M62,32 L95,40 L150,56 L215,74 L300,62 L332,64
+               Q365,100 390,125 Q425,152 448,158 Q465,188 495,192
+               Q535,215 555,228 L568,244
+               Q558,300 552,350 Q562,398 578,418 Q574,448 562,458
+               Q592,472 620,480 Q665,472 705,447 Q745,427 765,420
+               Q778,396 790,378 Q822,360 852,363
+               L857,398 Q844,428 812,448 L808,472
+               L772,472 Q758,502 746,527 L718,542 Q688,547 662,540
+               Q636,552 606,548 Q558,556 542,548 Q508,536 486,522
+               Q448,506 424,494 Q384,466 360,452 Q344,426 347,404
+               Q330,368 298,336 Q272,298 260,268 Q238,218 226,178
+               Q202,138 172,104 Q140,78 118,60
+               Q105,50 95,42
+               Q120,90 150,150 Q175,200 200,250 Q220,285 228,288
+               Q230,315 210,338
+               Q180,290 150,230 Q120,160 90,100 Q70,60 62,32 Z"
+            fill="#F5A44B" stroke="#C97A28" stroke-width="1.6"/>
+
+      <!-- Guatemala / Belize corner (greens) -->
+      <path d="M746,527 L772,472 L806,472 L804,528 L798,560 Q768,585 740,578 L724,552 Z"
+            fill="#B5CC8E" stroke="#8FA968" stroke-width="1"/>
+      <path d="M806,472 L826,478 L824,532 L804,528 Z"
+            fill="#9DBF77" stroke="#8FA968" stroke-width="1"/>
+
+      <!-- Islas Marías (tiny) -->
+      <ellipse cx="300" cy="392" rx="5" ry="2.5" fill="#F5A44B" stroke="#C97A28" stroke-width=".8"/>
+      <ellipse cx="312" cy="398" rx="4" ry="2" fill="#F5A44B" stroke="#C97A28" stroke-width=".8"/>
+
+      <!-- Geography labels -->
+      <text x="470" y="100" font-family="Georgia, 'Times New Roman', serif" font-size="42"
+            fill="#6B5B1E" letter-spacing="10" font-weight="600">U.S.A.</text>
+      <text x="455" y="300" font-family="Georgia, 'Times New Roman', serif" font-size="44"
+            fill="#7A4A12" letter-spacing="8" font-weight="700" text-anchor="middle">MEXICO</text>
+      <text x="735" y="255" font-family="Georgia, serif" font-size="22" font-style="italic"
+            fill="#2C6E9E" text-anchor="middle">Gulf of</text>
+      <text x="735" y="282" font-family="Georgia, serif" font-size="22" font-style="italic"
+            fill="#2C6E9E" text-anchor="middle">Mexico</text>
+      <text x="360" y="600" font-family="Georgia, serif" font-size="24" font-style="italic"
+            fill="#DCEBF5" letter-spacing="4" text-anchor="middle">NORTH PACIFIC OCEAN</text>
+      <text x="175" y="215" font-family="Georgia, serif" font-size="13" font-style="italic"
+            fill="#2C6E9E" transform="rotate(52 175 215)">Gulf of California</text>
+
+      <!-- ══ HONEYMOON ROUTE OVERLAY ══ -->
+      <!-- from Vancouver into Mexico City -->
+      <path d="M545,12 Q560,220 528,428" stroke="#8A6A1F" stroke-width="3"
+            stroke-dasharray="7 6" fill="none" marker-end="url(#flightArrow)"/>
+      <text x="558" y="26" font-family="Georgia, serif" font-style="italic" font-size="16"
+            fill="#6B5B1E">✈ from Vancouver</text>
+
+      <!-- to Vancouver from Guadalajara -->
+      <path d="M388,400 Q330,200 300,16" stroke="#8A6A1F" stroke-width="3"
+            stroke-dasharray="7 6" fill="none" marker-end="url(#flightArrow)"/>
+      <text x="160" y="26" font-family="Georgia, serif" font-style="italic" font-size="16"
+            fill="#6B5B1E">to Vancouver ✈</text>
+
+      <!-- ① Mexico City → ② Sayulita (flight) -->
+      <path d="M512,435 Q430,400 358,398" stroke="#8E1E3F" stroke-width="4"
+            fill="none" marker-end="url(#routeArrow)"/>
+      <text x="435" y="388" font-family="Georgia, serif" font-size="15" font-weight="700"
+            fill="#8E1E3F" text-anchor="middle" paint-order="stroke" stroke="#FDF6EC" stroke-width="4">① ✈ ②</text>
+
+      <!-- ② Sayulita → ③ Guadalajara (road) -->
+      <path d="M350,406 Q368,416 380,412" stroke="#8E1E3F" stroke-width="4"
+            stroke-dasharray="3 5" fill="none" marker-end="url(#routeArrow)"/>
+
+      <!-- City markers -->
+      <!-- ② Sayulita (coast, N of Puerto Vallarta) -->
+      <circle cx="346" cy="400" r="7" fill="#1D7A8C" stroke="#fff" stroke-width="2.5"/>
+      <text x="334" y="380" font-family="Georgia, serif" font-size="17" font-weight="700"
+            fill="#123F49" text-anchor="end" paint-order="stroke" stroke="#FDF6EC" stroke-width="4">② Sayulita</text>
+
+      <!-- ③ Guadalajara (inland) -->
+      <circle cx="388" cy="412" r="7" fill="#4C6B23" stroke="#fff" stroke-width="2.5"/>
+      <text x="392" y="442" font-family="Georgia, serif" font-size="17" font-weight="700"
+            fill="#33490F" paint-order="stroke" stroke="#FDF6EC" stroke-width="4">③ Guadalajara</text>
+
+      <!-- ① Mexico City (capital star) -->
+      <path d="M520,428 l3.5,7.5 8,.9 -6,5.6 1.7,8 -7.2,-4.2 -7.2,4.2 1.7,-8 -6,-5.6 8,-.9 Z"
+            fill="#C0281C" stroke="#fff" stroke-width="1.6"/>
+      <text x="534" y="462" font-family="Georgia, serif" font-size="17" font-weight="700"
+            fill="#701710" paint-order="stroke" stroke="#FDF6EC" stroke-width="4">① Mexico City</text>
+    </svg>
+    <div class="maplegend">
+      <span><i class="dot c"></i>① Mexico City</span>
+      <span><i class="dot t"></i>② Sayulita</span>
+      <span><i class="dot g"></i>③ Guadalajara</span>
+      <span><i class="dash"></i>Flights to / from Vancouver</span>
+    </div>
+  </div>
+
+  <div class="flights">
+    <div class="fcard">
+      <div class="lbl">Outbound · F82820</div>
+      <div class="froute"><span class="ap">YVR</span><span class="arrow">✈</span><span class="ap">MEX</span></div>
+      <div class="fmeta"><b>Sep 7</b> · 5:00 PM &rarr; 11:30 PM<br>Vancouver &rarr; Mexico City</div>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Mexico+City+International+Airport+MEX" target="_blank" rel="noopener">MEX airport</a>
+    </div>
+    <div class="fcard">
+      <div class="lbl">Return · F82855</div>
+      <div class="froute"><span class="ap">GDL</span><span class="arrow">✈</span><span class="ap">YVR</span></div>
+      <div class="fmeta"><b>Sep 20</b> · 4:40 PM &rarr; 9:00 PM<br>Guadalajara &rarr; Vancouver</div>
+      <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Guadalajara+International+Airport+GDL" target="_blank" rel="noopener">GDL airport</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- ════ MEXICO CITY ════ -->
+  <div class="leg city" data-n="uno">
+    <h2>Mexico City</h2>
+    <span class="span">Sep 7 – 11 · 4 nights</span>
+    <span class="tag">Culture &amp; Food</span>
+  </div>
+  <div class="stayinfo">
+    <span class="chip">Confirmed</span>
+    <span><b>Pandora House</b> · Sep 7–10 (3 nts)</span>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Pandora+House+hotel+Mexico+City" target="_blank" rel="noopener">Map</a>
+  </div>
+  <div class="stayinfo">
+    <span class="chip">Confirmed</span>
+    <span><b>Hotel Geneve CD de Mexico</b> · Sep 10–11 (1 nt)</span>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Hotel+Geneve+Ciudad+de+Mexico+Zona+Rosa" target="_blank" rel="noopener">Map</a>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">7</div><div class="m">Sep</div><div class="w">Mon</div></div>
+    <div>
+      <h3>The Adventure Begins</h3>
+      <ul>
+        <li>Land <b>MEX 11:30 PM</b> — pre-arrange airport transfer</li>
+        <li>Check in at <b>Pandora House</b>, first night in México</li>
+      </ul>
+      <div class="moment"><span class="h">♥</span> <b>Honeymoon moment:</b> toast your arrival — the first night of the trip you'll tell stories about for years.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">8</div><div class="m">Sep</div><div class="w">Tue</div></div>
+    <div>
+      <h3>Centro Histórico, Hand in Hand</h3>
+      <ul>
+        <li><b>Zócalo</b>, Metropolitan Cathedral &amp; <b>Templo Mayor</b></li>
+        <li>Palacio Nacional murals</li>
+        <li>Tacos al pastor — ease into the altitude</li>
+      </ul>
+      <div class="note">CDMX is 2,240m high. Hydrate, go gentle on day one.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">9</div><div class="m">Sep</div><div class="w">Wed</div></div>
+    <div>
+      <h3>Coyoacán &amp; Frida Kahlo</h3>
+      <ul>
+        <li><b>Frida Kahlo Museum</b> (La Casa Azul) — book ahead</li>
+        <li>Cobblestone Coyoacán &amp; its market</li>
+        <li>Evening mezcal for two</li>
+      </ul>
+      <div class="moment"><span class="h">♥</span> <b>Honeymoon moment:</b> Frida &amp; Diego's world — art, passion, and a garden made for slow wandering together.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">10</div><div class="m">Sep</div><div class="w">Thu</div></div>
+    <div>
+      <h3>Teotihuacán → Hotel Geneve</h3>
+      <ul>
+        <li>Sunrise-ish start to the <b>Pyramids of the Sun &amp; Moon</b> (~1 hr)</li>
+        <li>Switch hotels: check into the classic <b>Hotel Geneve</b> (Zona Rosa)</li>
+        <li>Pack for tomorrow's flight to the coast</li>
+      </ul>
+      <div class="note">Optional splurge: a hot-air balloon over Teotihuacán at dawn — a honeymoon classic.</div>
+    </div>
+  </div>
+
+  <!-- ════ SAYULITA ════ -->
+  <div class="leg sea" data-n="dos">
+    <h2>Sayulita</h2>
+    <span class="span">Sep 11 – 14 · 3 nights</span>
+    <span class="tag">Beach &amp; Surf</span>
+  </div>
+  <div class="stayinfo">
+    <span class="chip">Confirmed</span>
+    <span><b>Casa Selva Sayulita</b> · Sep 11–14 (3 nts)</span>
+    <a class="maplink" href="https://www.google.com/maps/search/?api=1&query=Casa+Selva+13+Calle+Chachalaca+Sayulita+Nayarit" target="_blank" rel="noopener">Map</a>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">11</div><div class="m">Sep</div><div class="w">Fri</div></div>
+    <div>
+      <h3>To the Pacific</h3>
+      <ul>
+        <li>Fly <b>MEX → PVR</b> (~1.5 hr) — book separately</li>
+        <li>Drive to <b>Sayulita</b> (~1 hr)</li>
+        <li>Check into <b>Casa Selva</b>, sunset on the beach</li>
+      </ul>
+      <div class="note warn">The MEX→PVR flight isn't booked yet — reserve it soon.</div>
+      <div class="moment"><span class="h">♥</span> <b>Honeymoon moment:</b> first Pacific sunset with your toes in the sand — margaritas mandatory.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">12</div><div class="m">Sep</div><div class="w">Sat</div></div>
+    <div>
+      <h3>Surf, Sand &amp; Nothing Much</h3>
+      <ul>
+        <li>Beginner surf lesson together, or pure beach time</li>
+        <li>Colorful murals &amp; boutique streets</li>
+        <li>Beach-club afternoon, dinner in town</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">13</div><div class="m">Sep</div><div class="w">Sun</div></div>
+    <div>
+      <h3>Marietas Islands or San Pancho</h3>
+      <ul>
+        <li>Boat trip to the <b>Marietas Islands</b> &amp; Hidden Beach</li>
+        <li>Or a slow day in dreamy <b>San Pancho</b></li>
+        <li>Snorkeling; whales possible this season</li>
+      </ul>
+      <div class="note">Marietas access is regulated &amp; tide-dependent — book a licensed tour ahead.</div>
+    </div>
+  </div>
+
+  <!-- ════ GUADALAJARA ════ -->
+  <div class="leg gdl" data-n="tres">
+    <h2>Guadalajara</h2>
+    <span class="span">Sep 14 – 20 · 6 nights</span>
+    <span class="tag">Family &amp; Fiesta</span>
+  </div>
+  <div class="stayinfo">
+    <span class="chip fam">Family</span>
+    <span><b>Alondra's family home</b> · Sep 14–20 (6 nts)</span>
+    <span><b>Depart:</b> Sep 20, GDL 4:40 PM</span>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">14</div><div class="m">Sep</div><div class="w">Mon</div></div>
+    <div>
+      <h3>Home to the Family</h3>
+      <ul>
+        <li>Check out of Casa Selva by 12 PM</li>
+        <li>Drive/bus to <b>Guadalajara</b> (~4 hr)</li>
+        <li>Settle in at <b>Alondra's family home</b>, dinner with family</li>
+      </ul>
+      <div class="moment"><span class="h">♥</span> <b>Honeymoon moment:</b> coming home to family as newlyweds — abrazos all around.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">15</div><div class="m">Sep</div><div class="w">Tue</div></div>
+    <div>
+      <h3>Historic Center &amp; Independence Eve</h3>
+      <ul>
+        <li><b>Guadalajara Cathedral</b> &amp; Plaza de Armas</li>
+        <li><b>Hospicio Cabañas</b> — Orozco murals (UNESCO)</li>
+        <li>Night: <b>El Grito</b> Independence celebrations 🎆</li>
+      </ul>
+      <div class="note">Sep 15 is Independence eve — plazas fill with festive crowds.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">16</div><div class="m">Sep</div><div class="w">Wed</div></div>
+    <div>
+      <h3>Tlaquepaque &amp; Art</h3>
+      <ul>
+        <li>Explore <b>Tlaquepaque</b> — crafts, galleries, mariachi</li>
+        <li>Independence Day parades around town</li>
+        <li>Relaxed family evening</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">17</div><div class="m">Sep</div><div class="w">Thu</div></div>
+    <div>
+      <h3>Lake Chapala &amp; Ajijic</h3>
+      <ul>
+        <li>Day trip to <b>Lake Chapala</b> — Mexico's largest lake (~45 min)</li>
+        <li>Stroll the <b>Ajijic malecón</b>, colorful streets &amp; murals</li>
+        <li>Lakeside lunch, back to GDL — rest for the big day</li>
+      </ul>
+      <div class="note">Alt: <b>Tapalpa</b> or <b>Mazamitla</b> — cool pine-forest pueblos mágicos (~2 hr) if you'd rather escape to the mountains.</div>
+    </div>
+  </div>
+
+  <div class="day hl">
+    <div class="daynum"><div class="d">18</div><div class="m">Sep</div><div class="w">Fri</div></div>
+    <div>
+      <h3>Max &amp; Amanda's Wedding</h3>
+      <ul>
+        <li>The big day — <b>Max &amp; Amanda's wedding</b> 🥰</li>
+        <li>Keep it open &amp; unrushed</li>
+        <li>Two celebrations of love, one dance floor</li>
+      </ul>
+      <div class="moment"><span class="h">♥</span> <b>Honeymoon moment:</b> newlyweds at a wedding — dance like it's your own reception, round two.</div>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">19</div><div class="m">Sep</div><div class="w">Sat</div></div>
+    <div>
+      <h3>Slow Recovery Day</h3>
+      <ul>
+        <li>Easy brunch &amp; coffee</li>
+        <li>Chapultepec avenue cafés, last shopping</li>
+        <li>Post-wedding hangs with friends &amp; family</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="day">
+    <div class="daynum"><div class="d">20</div><div class="m">Sep</div><div class="w">Sun</div></div>
+    <div>
+      <h3>Hasta Pronto, México</h3>
+      <ul>
+        <li>Final Guadalajara morning with family</li>
+        <li>Transfer to <b>GDL</b> for the <b>4:40 PM</b> flight home</li>
+      </ul>
+      <div class="moment"><span class="h">♥</span> <b>Honeymoon moment:</b> fly home with a camera roll full of proof that you did this right.</div>
+    </div>
+  </div>
+
+  <!-- ════ COSTS ════ -->
+  <div class="costs">
+    <h2>The <em>numbers</em></h2>
+    <div class="sub">All amounts in CAD · confirmed bookings for two</div>
+
+    <div class="costgroup">Flights</div>
+    <div class="costrow">
+      <div class="name">YVR → MEX <small>Sep 7 · F82820</small></div>
+      <div class="amt">$772.20</div>
+    </div>
+    <div class="costrow">
+      <div class="name">GDL → YVR <small>Sep 20 · F82855</small></div>
+      <div class="amt">$753.68</div>
+    </div>
+    <div class="costrow sub2">
+      <div class="name">Flights subtotal</div>
+      <div class="amt">$1,525.88</div>
+    </div>
+
+    <div class="costgroup">Stays</div>
+    <div class="costrow">
+      <div class="name">Pandora House <small>Mexico City · Sep 7–10 · 3 nts</small></div>
+      <div class="amt">$503.12</div>
+    </div>
+    <div class="costrow">
+      <div class="name">Hotel Geneve CD de Mexico <small>Mexico City · Sep 10–11 · 1 nt</small></div>
+      <div class="amt">$148.05</div>
+    </div>
+    <div class="costrow">
+      <div class="name">Casa Selva Sayulita <small>Sayulita · Sep 11–14 · 3 nts</small></div>
+      <div class="amt">$689.00</div>
+    </div>
+    <div class="costrow">
+      <div class="name">Alondra's family home <small>Guadalajara · Sep 14–20 · 6 nts</small></div>
+      <div class="amt">Free ♥</div>
+    </div>
+    <div class="costrow sub2">
+      <div class="name">Stays subtotal</div>
+      <div class="amt">$1,340.17</div>
+    </div>
+
+    <div class="costrow total">
+      <div class="name">Booked so far</div>
+      <div class="amt">$2,866.05</div>
+    </div>
+
+    <div class="costnote">
+      <b>Still to book:</b> MEX→PVR internal flight, Sayulita→Guadalajara transport,
+      plus food, tours, and local transit.
+    </div>
+  </div>
+
+  <!-- ════ FULL BUDGET ESTIMATE ════ -->
+  <div class="costs">
+    <h2>The <em>full picture</em></h2>
+    <div class="sub">Estimated total for the whole trip · two people · CAD</div>
+
+    <div class="costgroup">Already booked</div>
+    <div class="costrow">
+      <div class="name">Intl flights + hotels <small>YVR↔MEX/GDL + 3 hotels</small></div>
+      <div class="amt">$2,866</div>
+    </div>
+
+    <div class="costgroup">Getting around</div>
+    <div class="costrow">
+      <div class="name">MEX → PVR flight <small>~$70 USD pp, incl. bag</small></div>
+      <div class="amt">$192</div>
+    </div>
+    <div class="costrow">
+      <div class="name">PVR → Sayulita transfer</div>
+      <div class="amt">$80</div>
+    </div>
+    <div class="costrow">
+      <div class="name">Sayulita → Guadalajara <small>bus, both</small></div>
+      <div class="amt">$90</div>
+    </div>
+    <div class="costrow sub2">
+      <div class="name">Local transit <small>Uber, metro, taxis · 13 days</small></div>
+      <div class="amt">$350</div>
+    </div>
+
+    <div class="costgroup">Food · 13 days, two</div>
+    <div class="costrow sub2">
+      <div class="name">Meals &amp; drinks <small>street + mid-range mix; some family meals free</small></div>
+      <div class="amt">$1,540</div>
+    </div>
+
+    <div class="costgroup">Activities</div>
+    <div class="costrow sub2">
+      <div class="name">Tours &amp; sights <small>Marietas boat, Teotihuacán, Frida, Chapala, surf lesson…</small></div>
+      <div class="amt">$690</div>
+    </div>
+
+    <div class="costgroup">Gifts &amp; extras</div>
+    <div class="costrow sub2">
+      <div class="name">Wedding gift, family gifts, souvenirs, tips, SIM</div>
+      <div class="amt">$600</div>
+    </div>
+
+    <div class="costrow total">
+      <div class="name">Estimated grand total</div>
+      <div class="amt">$6,400</div>
+    </div>
+
+    <div class="costnote">
+      That's roughly <b>$3,200 CAD per person</b> for 14 days. A realistic range is
+      <b>$5,500 – $8,000</b> depending on dining, tours, and the wedding.
+      Staying with Alondra's family (6 free nights) keeps this well below a typical
+      hotel-only trip. Not included: a dawn hot-air balloon over Teotihuacán
+      (~$300 CAD for two) or any big shopping splurges.
+    </div>
+  </div>
+
+  <!-- ════ TIPS ════ -->
+  <div class="tips">
+    <h2>Good to know</h2>
+    <div class="grid">
+      <div><h4>The gap to fill</h4><p>Mexico City → Sayulita needs an internal flight (MEX→PVR is closest). Book it before prices climb.</p></div>
+      <div><h4>The wedding</h4><p>Max &amp; Amanda on Sep 18. Confirm venue, dress code &amp; transport; keep Sep 17 &amp; 19 flexible.</p></div>
+      <div><h4>Two CDMX hotels</h4><p>Pandora House (Sep 7–10) then Hotel Geneve (Sep 10–11). Plan the mid-stay switch.</p></div>
+      <div><h4>Independence</h4><p>Sep 15–16 is Mexican Independence — fireworks, crowds, some closures in Guadalajara.</p></div>
+      <div><h4>Late arrival</h4><p>You land in CDMX at 11:30 PM on Sep 7 — arrange a hotel transfer in advance.</p></div>
+      <div><h4>Weather</h4><p>September is warm &amp; humid with afternoon rain. Light layers, sun protection, a rain shell.</p></div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ff">Kosei &amp; Alondra · ¡Viva México!</div>
+  <div class="sub">City, sea, family, and a honeymoon to remember</div>
+  <div class="sub">Mexico City · Sayulita · Guadalajara — Sep 7–20, 2026</div>
+  <div class="flourish">♥</div>
+</footer>
+
+</body>
+</html>
